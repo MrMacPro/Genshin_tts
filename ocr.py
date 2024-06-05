@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QApplication
 import sys
 import os
 
-CACHE_DIR = "C:/Users/zshha/Documents/Genshin_tts/cache/"
+CACHE_DIR = "./cache/"
 
 def take_screenshot(process_name, corners: list, task_name):
     hwnd_title = dict()
