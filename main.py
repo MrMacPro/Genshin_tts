@@ -1,5 +1,4 @@
 import psutil
-import easyocr
 import os
 from read_lib import read_lib
 import ngender
@@ -15,9 +14,6 @@ MALE_VOICE = "zh-CN-YunxiNeural"
 def string_similar(s1, s2):
     return difflib.SequenceMatcher(None, s1, s2).quick_ratio()
 
-def is_Chinese(char):
-    return '\u4e00' <= char <= '\u9fa5'
-
 def solve_text(text):
     result = text.replace(" ", "")
     return result
@@ -30,8 +26,7 @@ def check_process_running():
     return False
 
 def in_dialogue():
-    text = ocr("GenshinImpact", "check_dialogue", 0.05, 0.03, 0.08, 0.06)
-    return text[0] == "自动"
+    return len(ocr("GenshinImpact", "check_dialogue", 0, 0.93, 0.87, 1)) == 0
 
 def get_dialogue():
     name = ocr("GenshinImpact", "get_name", 0, 0.78, 1, 0.85)[0]
@@ -57,9 +52,9 @@ def person_to_voice(person):
     else:
         return MALE_VOICE
 
-reader = easyocr.Reader(['ch_sim', 'en'], gpu=True)
-print("Ready...")
 last_text = ""
+if not os.path.exists(CACHE_DIR):
+    os.makedirs(CACHE_DIR)
 
 while True:
     try:

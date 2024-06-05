@@ -6,6 +6,8 @@ import os
 
 CACHE_DIR = "./cache/"
 
+reader = easyocr.Reader(['ch_sim', 'en'], gpu=True)
+
 def take_screenshot(process_name, corners: list, task_name):
     hwnd_title = dict()
 
