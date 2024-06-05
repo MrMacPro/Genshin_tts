@@ -1,0 +1,6 @@
+psutil
+pywin32
+PyQt5
+easyocr
+edge-tts
+ngender
