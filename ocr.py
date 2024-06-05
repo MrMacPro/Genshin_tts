@@ -36,7 +36,6 @@ def take_screenshot(process_name, corners: list, task_name):
 
 def ocr(process_name, task_name, left_top, left_bottom, right_top, right_bottom, lang=['ch_sim', 'en']):
     file_name = take_screenshot(process_name, [left_top, left_bottom, right_top, right_bottom], task_name)
-    reader = easyocr.Reader(lang)
     text = reader.readtext(file_name)
     os.remove(file_name)
     return [i[1] for i in text]
