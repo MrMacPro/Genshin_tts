@@ -67,11 +67,11 @@ while True:
             if in_dialogue():
                 print("In dialogue...")
                 person, text = get_dialogue()
-                if string_similar(text, last_text) < 0.9 and text.endswith(('.', '!', '?', '。', '！', '？')):
+                if string_similar(text, last_text) < 0.9 and text.endswith(('.', '!', '?', '。', '！', '？', "…")):
                     os.system(f"edge-tts --rate=+10% --text '{text}' --voice {person_to_voice(person)} --write-media {CACHE_DIR}voice.wav")
                     os.system("mpv " + CACHE_DIR + "voice.wav")
                     os.remove(CACHE_DIR + "voice.wav")
-                last_text = text
+                    last_text = text
     except KeyboardInterrupt:
         for file_name in os.listdir(CACHE_DIR):
             os.remove(CACHE_DIR + file_name)
