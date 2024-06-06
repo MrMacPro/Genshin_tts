@@ -27,11 +27,14 @@ def check_process_running():
     return False
 
 def in_dialogue():
-    return len(ocr("GenshinImpact", "check_dialogue", 0, 0.93, 0.87, 1)) == 0
+    try:
+        return ocr("GenshinImpact", "check_dialogue", 0.05, 0.03, 0.08, 0.06)[0] == "自动"
+    except:
+        return False
 
 def get_dialogue():
-    name = ocr("GenshinImpact", "get_name", 0, 0.78, 1, 0.85)[0]
-    dialogue = ocr("GenshinImpact", "get_dialogue", 0, 0.85, 1, 0.97)
+    name = ocr("GenshinImpact", "get_name", 0, 0.78, 1, 0.84)[0]
+    dialogue = ocr("GenshinImpact", "get_dialogue", 0, 0.84, 1, 0.97)
     dialogue = "".join(dialogue)
     dialogue = solve_text(dialogue)
     dialogue = dialogue.replace("EZ4ZSH", "旅行者")
