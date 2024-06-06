@@ -4,7 +4,6 @@ from read_lib import read_lib
 import ngender
 from ocr import ocr
 import difflib
-import threading
 import time
 
 CACHE_DIR = "./cache/"
@@ -38,7 +37,7 @@ def in_dialogue():
 
 def get_dialogue():
     name = ocr("GenshinImpact", "get_name", 0, 0.78, 1, 0.83)[0]
-    dialogue = ocr("GenshinImpact", "get_dialogue", 0, 0.85, 1, 0.97)
+    dialogue = ocr("GenshinImpact", "get_dialogue", 0, 0.845, 1, 0.97)
     dialogue = "".join(dialogue)
     dialogue = solve_text(dialogue)
     dialogue = dialogue.replace("EZ4ZSH", "旅行者")

@@ -9,3 +9,6 @@ Install required libs with pip:
 
 # Run
 Launch run.bat
+
+# Bugs Remaining
+Temporarily fail to detect the last symbol of a sentence. The program will not read out an incomplete sentence without ending with a symbol.
